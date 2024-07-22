@@ -1,5 +1,5 @@
-import  jwt  from "jsonwebtoken";
-export const secret = "1a2b3c4dac12"
+const jwt = require("jsonwebtoken");
+const secret = "1a2b3c4dac12"
 
 const authMiddleware = async (req, res, next) => {
     const authHeader = req.headers.authorization;
@@ -17,4 +17,7 @@ const authMiddleware = async (req, res, next) => {
     }
 }
 
-export default authMiddleware;
+module.exports = {
+    authMiddleware,
+    secret
+}

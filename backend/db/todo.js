@@ -7,4 +7,8 @@ const todoSchema = new mongoose.Schema({
     userId: {type:String, required: true}
 })
 
-export const todoModel = mongoose.model("Tasks", todoSchema);
+const todoModel = mongoose.model("Tasks", todoSchema);
+
+module.exports = {
+    todoModel
+}

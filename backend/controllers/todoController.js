@@ -43,6 +43,6 @@ const getTodos = (req, res) => {
 
 module.exports = {
     addTask,
-    getTodos,
-    deleteTask
-}
+    deleteTask,
+    getTodos
+};

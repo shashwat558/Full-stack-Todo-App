@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-import  secret  from "../middleware/middleware";
+const  secret = require("../middleware/middleware");
 const { default: userModel } = require("../db/user");
 
 
