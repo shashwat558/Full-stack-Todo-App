@@ -1,4 +1,4 @@
-import axios from '../axios/axios';
+import axios from 'axios';;
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("/user/login", info);
+            const response = await axios.post("http://localhost:3000/api/user/signup", info);
             const jwt = response.data;
             localStorage.setItem("token", jwt);
         } catch (err) {

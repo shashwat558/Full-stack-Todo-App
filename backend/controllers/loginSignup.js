@@ -1,8 +1,8 @@
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const  secret = require("../middleware/middleware");
-const { default: userModel } = require("../db/user");
+const  { secret } = require("../middleware/middleware");
+const { userModel } = require("../db/user");
 
 
 const loginUser = async (req, res) => {
@@ -19,7 +19,8 @@ const loginUser = async (req, res) => {
         if(!islegit){
             return res.status(403).json({message: "Incorrect email or password"});
         }
-        const token = jwt.sign(user._id, secret);
+        const payload = user._id.toString();
+        const token = jwt.sign(payload, secret);
         res.status(200).json({message: "Logged in Succesfully",token:token});
     }catch(err){
         res.status(500).json({Error: err.message})
@@ -44,9 +45,10 @@ const signUpUser = async (req, res) => {
 
         const newUser = new userModel({name, email, password: hashedPassword});
         const user = await newUser.save();
-        const token = jwt.sign(user._id, secret);
+        const payload = user._id.toString();
+        const token = jwt.sign(payload, secret);
         res.status(200).json({
-            message:  `${user} Created Succesfully`,
+            message:  `User Created Succesfully`,
             token: token
         })
     }catch(err){

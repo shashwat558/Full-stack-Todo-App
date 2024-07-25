@@ -1,4 +1,4 @@
-import axios from '../axios/axios';
+import axios from '../Axios/axios';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
