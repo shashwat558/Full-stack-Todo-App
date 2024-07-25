@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/user', userRouter);
-app.use('/ap/todo', todoRouter)
+app.use('/api/todo', todoRouter)
 
 app.listen(port, () => {
      console.log(`listening on the port ${port}`)

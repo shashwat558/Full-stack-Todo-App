@@ -1,10 +1,14 @@
 import axios from '../Axios/axios';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 
 const Login = () => {
-    const [info, setInfo] = useState({});    
+    const navigate = useNavigate(); 
 
+    const [info, setInfo] = useState({});   
+    
     const handleChange = (e) => {
         const { id, value } = e.target;
         setInfo({ ...info, [id]: value });
@@ -14,8 +18,9 @@ const Login = () => {
         e.preventDefault();
         try {
             const response = await axios.post("/user/login", info);
-            const jwt = response.data;
+            const jwt = response.data.token;
             localStorage.setItem("token", jwt);
+            navigate('/todos')
         } catch (err) {
             console.log(err);
         }

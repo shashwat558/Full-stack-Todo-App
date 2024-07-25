@@ -7,6 +7,6 @@ const router = express.Router();
 
 router.post("/Addtodo",authMiddleware, addTask);
 router.post("/removeTodo",authMiddleware,  deleteTask);
-router.get("/getTodos",authMiddleware, getTodos);
+router.get("/todos",authMiddleware, getTodos);
 
 module.exports = router;
