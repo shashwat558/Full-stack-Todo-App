@@ -11,8 +11,12 @@ const Todolist = () => {
             const response = await axios.get("http://localhost:3000/api/todo/todos", {
               headers: {Authorization:`Bearer ${localStorage.getItem("token")}`}
             })
-        }
-    })
+            const data = await response.json();
+            setTodos(data)
+
+        };
+        getTodos()
+    },[])
   return (
     <div></div>
   )
