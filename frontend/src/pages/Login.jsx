@@ -1,21 +1,26 @@
 import axios from '../Axios/axios';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+
+import Context from '../Context/Context';
 
 
 const Login = () => {
     const navigate = useNavigate(); 
 
-    const [info, setInfo] = useState({});   
+    const [info, setInfo] = useState({});  
+    const {setName} = useContext(Context) 
     
     const handleChange = (e) => {
         const { id, value } = e.target;
         setInfo({ ...info, [id]: value });
+        
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setName(info)
         try {
             const response = await axios.post("/user/login", info);
             const jwt = response.data.token;

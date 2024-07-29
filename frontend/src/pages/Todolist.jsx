@@ -1,10 +1,12 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import Context from '../Context/Context';
 
 const Todolist = () => {
     const [todos, setTodos] = useState([]);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+    const {user} = useContext(Context)
 
     useEffect(() => {
         const getTodos = async () => {
@@ -17,8 +19,24 @@ const Todolist = () => {
         };
         getTodos()
     },[])
+
+    const addTask = async () => {
+      
+    }
   return (
-    <div></div>
+    <div>
+      {user.name}
+      {todos.map((todo) => {
+        <div>
+          <div>{todo.id}</div>
+        <div>{todo.title}</div>
+        <div>{todo.description}</div>
+        </div>
+
+      })}
+
+
+    </div>
   )
 }
 

@@ -1,9 +1,11 @@
 import axios from 'axios';;
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Context from '../Context/Context';
 
 const Login = () => {
-    const [info, setInfo] = useState({});    
+    const [info, setInfo] = useState({});  
+    const {setName} = useContext(Context);  
 
     const handleChange = (e) => {
         const { id, value } = e.target;
@@ -12,6 +14,7 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setName(info)
         try {
             const response = await axios.post("http://localhost:3000/api/user/signup", info);
             const jwt = response.data;
