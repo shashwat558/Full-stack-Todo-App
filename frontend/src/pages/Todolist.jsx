@@ -12,6 +12,7 @@ const Todolist = () => {
     
 
     useEffect(() => {
+      console.log("jdsofjojffj")
         const getTodos = async () => {
             const response = await axios.get("http://localhost:3000/api/todo/todos", {
               headers: {Authorization:`Bearer ${localStorage.getItem("token")}`}
@@ -22,10 +23,14 @@ const Todolist = () => {
         };
         getTodos()
     },[])
+    console.log("jdsofjojffj")
+
 
     const addTask = async () => {
-      const responce = await axios.post("http://localhost:3000/api/todo/Addtodos",{title, description});
-      const data = await responce.data.todo;
+      const responce = await axios.post("http://localhost:3000/api/todo/Addtodos",{title, description},
+      {headers:{Authorization: `Bearer ${localStorage.getItem("token")}`}});
+      const data = responce.data.todo;
+      console.log("fsjfsl")
 
       let newTodo = [];
       for(let i = 0; i<todos.length; i++) {
