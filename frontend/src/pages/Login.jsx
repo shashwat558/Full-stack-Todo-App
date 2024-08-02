@@ -20,7 +20,7 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setName(info)
+        setName(info.name)
         try {
             const response = await axios.post("/user/login", info);
             const jwt = response.data.token;

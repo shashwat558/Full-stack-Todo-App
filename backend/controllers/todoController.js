@@ -10,9 +10,9 @@ const addTask = async (req, res) => {
     const completed = false;
     const userId = req.headers["userid"];
     const newTask = new todoModel({title, description, completed, userId});
-    newTask.save() 
+    const saveTodo = await newTask.save() 
      .then((saveTodo) => {
-        res.status(201).json({saveTodo})
+        res.status(201).json({todo: saveTodo})
      })
      .catch((err) => {
         res.status(500).json({message: err})        
