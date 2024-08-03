@@ -20,8 +20,10 @@ const loginUser = async (req, res) => {
             return res.status(403).json({message: "Incorrect email or password"});
         }
         const payload = user._id.toString();
-        const token = jwt.sign(payload, secret);
-        res.status(200).json({message: "Logged in Succesfully",token:token});
+        console.log(payload)
+
+        const token = jwt.sign({id:payload}, secret);
+        res.status(200).json({message: "Logged in Succesfully",token:token, userId: user._id});
     }catch(err){
         res.status(500).json({Error: err.message})
     }

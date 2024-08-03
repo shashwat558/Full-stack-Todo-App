@@ -24,7 +24,9 @@ const Login = () => {
         try {
             const response = await axios.post("/user/login", info);
             const jwt = response.data.token;
+            const userId = response.data.userId;
             localStorage.setItem("token", jwt);
+            localStorage.setItem("userId", userId)
             navigate('/todos')
         } catch (err) {
             console.log(err);
